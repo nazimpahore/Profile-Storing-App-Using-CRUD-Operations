@@ -1,0 +1,30 @@
+<%- include('partials/header', { title: 'All Users' }) %>
+
+  <h1 class="text-3xl tracking-tighter mb-6">All Users</h1>
+
+  <% if (users.length > 0) { %>
+    <div class="flex gap-4 flex-wrap">
+      <% users.forEach(function(user) { %>
+        <div class="w-56 p-4 bg-zinc-800 rounded-xl">
+          <div class="w-full h-48 bg-zinc-700 rounded-lg overflow-hidden mb-3">
+            <% if (user.image) { %>
+              <img class="w-full h-full object-cover" src="<%= user.image %>" alt="<%= user.name %>" />
+            <% } else { %>
+              <div class="w-full h-full flex items-center justify-center text-zinc-500 text-4xl">👤</div>
+            <% } %>
+          </div>
+          <h3 class="text-lg font-semibold tracking-tight truncate"><%= user.name %></h3>
+          <p class="text-zinc-400 text-sm truncate mb-4"><%= user.email %></p>
+          <div class="flex gap-3">
+            <a href="/edit/<%= user._id %>" class="text-blue-400 hover:text-blue-300 text-sm transition-colors">Edit</a>
+            <a href="/delete/<%= user._id %>" class="text-red-400 hover:text-red-300 text-sm transition-colors"
+               onclick="return confirm('Delete <%= user.name %>?')">Delete</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="text-zinc-500 mt-10 text-lg">No users yet. <a href="/" class="text-blue-400 hover:text-blue-300">Create one →</a></p>
+  <% } %>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,21 @@
+{
+  "name": "profile-storing-app",
+  "version": "1.0.0",
+  "description": "A simple CRUD app to store and manage user profiles using Express, EJS, and MongoDB.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": ["express", "mongodb", "crud", "ejs"],
+  "author": "Nazim Pahore",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}

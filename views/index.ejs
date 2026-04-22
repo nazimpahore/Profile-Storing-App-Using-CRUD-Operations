@@ -1,0 +1,37 @@
+<%- include('partials/header', { title: 'Create User' }) %>
+
+  <h1 class="text-3xl tracking-tighter mb-6">Create User</h1>
+
+  <form action="/create" method="post" class="flex flex-col gap-3 max-w-sm">
+    <input
+      type="text"
+      name="name"
+      placeholder="Full name"
+      autocomplete="off"
+      required
+      class="px-5 py-2 bg-transparent border-2 border-zinc-700 rounded outline-none focus:border-blue-500 transition-colors"
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Email address"
+      autocomplete="off"
+      required
+      class="px-5 py-2 bg-transparent border-2 border-zinc-700 rounded outline-none focus:border-blue-500 transition-colors"
+    />
+    <input
+      type="url"
+      name="image"
+      placeholder="Profile image URL"
+      autocomplete="off"
+      class="px-5 py-2 bg-transparent border-2 border-zinc-700 rounded outline-none focus:border-blue-500 transition-colors"
+    />
+    <button
+      type="submit"
+      class="px-5 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors font-medium cursor-pointer"
+    >
+      Create User
+    </button>
+  </form>
+
+<%- include('partials/footer') %>
