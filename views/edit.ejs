@@ -1,37 +1,48 @@
 <%- include('partials/header', { title: 'Edit User' }) %>
 
-  <h1 class="text-3xl tracking-tighter mb-6">Update User</h1>
+  <div class="page-header animate-in delay-1">
+    <h1 class="page-header__title">Edit Profile</h1>
+    <p class="page-header__subtitle">Update details for <%= user.name %></p>
+  </div>
 
-  <form action="/update/<%= user._id %>" method="post" class="flex flex-col gap-3 max-w-sm">
-    <input
-      type="text"
-      name="name"
-      placeholder="Full name"
-      value="<%= user.name %>"
-      required
-      class="px-5 py-2 bg-transparent border-2 border-zinc-700 rounded outline-none focus:border-blue-500 transition-colors"
-    />
-    <input
-      type="email"
-      name="email"
-      placeholder="Email address"
-      value="<%= user.email %>"
-      required
-      class="px-5 py-2 bg-transparent border-2 border-zinc-700 rounded outline-none focus:border-blue-500 transition-colors"
-    />
-    <input
-      type="url"
-      name="image"
-      placeholder="Profile image URL"
-      value="<%= user.image %>"
-      class="px-5 py-2 bg-transparent border-2 border-zinc-700 rounded outline-none focus:border-blue-500 transition-colors"
-    />
-    <button
-      type="submit"
-      class="px-5 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors font-medium cursor-pointer"
-    >
-      Save Changes
-    </button>
-  </form>
+  <div class="glass-card form-card animate-in delay-2">
+    <form action="/update/<%= user._id %>" method="post" class="form-group">
+      <div class="input-wrapper">
+        <span class="input-wrapper__icon">👤</span>
+        <input
+          type="text"
+          name="name"
+          placeholder="Full name"
+          value="<%= user.name %>"
+          required
+          class="form-input"
+        />
+      </div>
+      <div class="input-wrapper">
+        <span class="input-wrapper__icon">✉</span>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email address"
+          value="<%= user.email %>"
+          required
+          class="form-input"
+        />
+      </div>
+      <div class="input-wrapper">
+        <span class="input-wrapper__icon">🖼</span>
+        <input
+          type="url"
+          name="image"
+          placeholder="Profile image URL (optional)"
+          value="<%= user.image %>"
+          class="form-input"
+        />
+      </div>
+      <button type="submit" class="btn btn--primary" style="margin-top: 6px;">
+        Save Changes →
+      </button>
+    </form>
+  </div>
 
 <%- include('partials/footer') %>

@@ -1,30 +1,38 @@
 <%- include('partials/header', { title: 'All Users' }) %>
 
-  <h1 class="text-3xl tracking-tighter mb-6">All Users</h1>
+  <div class="page-header animate-in delay-1">
+    <h1 class="page-header__title">All Profiles</h1>
+    <p class="page-header__subtitle"><%= users.length %> user<%= users.length !== 1 ? 's' : '' %> saved</p>
+  </div>
 
   <% if (users.length > 0) { %>
-    <div class="flex gap-4 flex-wrap">
-      <% users.forEach(function(user) { %>
-        <div class="w-56 p-4 bg-zinc-800 rounded-xl">
-          <div class="w-full h-48 bg-zinc-700 rounded-lg overflow-hidden mb-3">
+    <div class="users-grid">
+      <% users.forEach(function(user, i) { %>
+        <div class="glass-card user-card animate-in delay-<%= Math.min(i + 2, 8) %>">
+          <div class="user-card__image-wrapper">
             <% if (user.image) { %>
-              <img class="w-full h-full object-cover" src="<%= user.image %>" alt="<%= user.name %>" />
+              <img class="user-card__image" src="<%= user.image %>" alt="<%= user.name %>" />
             <% } else { %>
-              <div class="w-full h-full flex items-center justify-center text-zinc-500 text-4xl">👤</div>
+              <div class="user-card__avatar-placeholder">👤</div>
             <% } %>
           </div>
-          <h3 class="text-lg font-semibold tracking-tight truncate"><%= user.name %></h3>
-          <p class="text-zinc-400 text-sm truncate mb-4"><%= user.email %></p>
-          <div class="flex gap-3">
-            <a href="/edit/<%= user._id %>" class="text-blue-400 hover:text-blue-300 text-sm transition-colors">Edit</a>
-            <a href="/delete/<%= user._id %>" class="text-red-400 hover:text-red-300 text-sm transition-colors"
-               onclick="return confirm('Delete <%= user.name %>?')">Delete</a>
+          <div class="user-card__body">
+            <h3 class="user-card__name"><%= user.name %></h3>
+            <p class="user-card__email"><%= user.email %></p>
+            <div class="user-card__actions">
+              <a href="/edit/<%= user._id %>" class="btn btn--ghost btn--sm">✎ Edit</a>
+              <a href="/delete/<%= user._id %>" class="btn btn--danger btn--sm">✕ Delete</a>
+            </div>
           </div>
         </div>
       <% }) %>
     </div>
   <% } else { %>
-    <p class="text-zinc-500 mt-10 text-lg">No users yet. <a href="/" class="text-blue-400 hover:text-blue-300">Create one →</a></p>
+    <div class="empty-state animate-in delay-2">
+      <div class="empty-state__icon">📭</div>
+      <p class="empty-state__text">No profiles yet. Start by creating one!</p>
+      <a href="/" class="btn btn--primary">Create First Profile →</a>
+    </div>
   <% } %>
 
 <%- include('partials/footer') %>

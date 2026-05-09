@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 // Connect to database
 connectDB();
 
-// View enginec
+// View engine
 app.set('view engine', 'ejs');
 
 // Middleware
